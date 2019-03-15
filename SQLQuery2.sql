@@ -77,8 +77,10 @@ FROM Album )
  /*11-----Modify the previous query to also display the title of the album.*/
  
  SELECT s.title, a.title, songlength as Song
- From Song s, Album a
- Where SongLength = ( SELECT MAX(SongLength))
+ From Song s left join Album a
+ ON s.AlbumId = a.id
+ Where SongLength = ( SELECT MAX(SongLength)
+ FROM song)
 
 
 
